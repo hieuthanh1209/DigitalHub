@@ -12,24 +12,20 @@ namespace DigitalHub.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Product
+    public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Product()
+        public Customer()
         {
-            this.OrderDetails = new HashSet<OrderDetail>();
+            this.OrderProes = new HashSet<OrderPro>();
         }
     
-        public int ProductID { get; set; }
-        public string NamePro { get; set; }
-        public string DecriptionPro { get; set; }
-        public string Category { get; set; }
-        public Nullable<decimal> Price { get; set; }
-        public Nullable<decimal> DiscountPrice { get; set; }
-        public string ImagePro { get; set; }
+        public int IDCus { get; set; }
+        public string NameCus { get; set; }
+        public string PhoneCus { get; set; }
+        public string EmailCus { get; set; }
     
-        public virtual Category Category1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ICollection<OrderPro> OrderProes { get; set; }
     }
 }

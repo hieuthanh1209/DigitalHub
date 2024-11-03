@@ -14,8 +14,8 @@ namespace DigitalHub.Controllers
             // Danh sách sản phẩm mẫu
             var products = new List<Product>
         {
-            new Product { Id = 1, Name = "Laptop gaming Acer Nitro 16 Phoenix AN16 41 R50Z", OldPrice = "31.490.000₫", Price = "29.990.000₫", ImageUrl = "https://storage.googleapis.com/a1aa/image/Dlk3VfxEQP3cFiRd4jEUQ1oIicvRcqjs9bmETIpDwkGeqWnTA.jpg", Rating = 3.5 },
-            new Product { Id = 2, Name = "Laptop gaming Acer Nitro 16 AN16 41 R50Z", OldPrice = "31.490.000₫", Price = "29.990.000₫", ImageUrl = "https://storage.googleapis.com/a1aa/image/Dlk3VfxEQP3cFiRd4jEUQ1oIicvRcqjs9bmETIpDwkGeqWnTA.jpg", Rating = 3.5 },
+            new Product { ProductID = 1, NamePro = "Laptop gaming Acer Nitro 16 Phoenix AN16 41 R50Z", DecriptionPro = "Laptop gaming 16gb ram", Price = 31490000, DiscountPrice = 29990000, ImagePro = "https://storage.googleapis.com/a1aa/image/Dlk3VfxEQP3cFiRd4jEUQ1oIicvRcqjs9bmETIpDwkGeqWnTA.jpg" },
+            
             // Thêm các sản phẩm khác
         };
 
