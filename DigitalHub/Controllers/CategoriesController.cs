@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DigitalHub.Models;
+using System.Net;
 
 namespace DigitalHub.Controllers
 {
@@ -56,6 +57,32 @@ namespace DigitalHub.Controllers
             db.Entry(category).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var category = db.Categories.Where(c => c.ID == id).FirstOrDefault();
+            if (category == null)
+                return HttpNotFound();
+            return View(category);
+        }
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            try
+            {
+                var category = db.Categories.Where(c => c.ID == id).FirstOrDefault();
+                db.Categories.Remove(category);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return Content("Không xoá được do có liên quan đến bảng khác");
+            }
         }
     }
 }

@@ -1,17 +1,17 @@
 ﻿@model IEnumerable<DigitalHub.Models.Product>
 
 @{
-    ViewBag.Title = "TrangChu";
+    ViewBag.Title = "LinhKien";
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
+
 <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
 <link rel="stylesheet" href="mystyle.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
 
-
 <div class="p-5">
-    <h2 class="mb-4">Mặt hàng bán chạy</h2>
-  
+    <h2 class="mb-4">Linh kiện bán chạy</h2>
+
     <div class="row">
         @foreach (var item in Model)
         {
@@ -27,6 +27,7 @@
                         </h5>
                         <p class="old-price text-muted text-decoration-line-through mb-1">@Html.DisplayFor(modelItem => item.Price)</p>
                         <p class="price text-danger fs-5 mb-1">
+                            <!--29.990.000₫-->
                             @Html.DisplayFor(modelItem => item.DiscountPrice)
                         </p>
                         <p class="rating text-warning mb-3">
@@ -37,5 +38,5 @@
                 </div>
             </div>
         }
-        </div>
+    </div>
 </div>

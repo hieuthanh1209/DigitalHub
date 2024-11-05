@@ -1,17 +1,17 @@
 ﻿@model IEnumerable<DigitalHub.Models.Product>
 
 @{
-    ViewBag.Title = "TrangChu";
+    ViewBag.Title = "TaiNghe";
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
+
 <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
 <link rel="stylesheet" href="mystyle.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
 
-
 <div class="p-5">
-    <h2 class="mb-4">Mặt hàng bán chạy</h2>
-  
+    <h2 class="mb-4">Tai nghe bán chạy</h2>
+
     <div class="row">
         @foreach (var item in Model)
         {
@@ -37,5 +37,6 @@
                 </div>
             </div>
         }
-        </div>
+    </div>
 </div>
+
