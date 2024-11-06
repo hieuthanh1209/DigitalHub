@@ -1,33 +1,41 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model IEnumerable<DigitalHub.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
+<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+<link rel="stylesheet" href="mystyle.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
 
+<div class="p-5">
+    <h2 class="mb-4">Mặt hàng bán chạy</h2>
+  
     <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
-    </div>
-</main>
+        @foreach (var item in Model)
+        {
+            <!-- Sản phẩm 1 -->
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-2">
+                <div class="card w-100">
+                    <img class="card-img-top" alt="laptop_image" src="~/Images/@item.ImagePro" />
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="ProductPage.html" class="text-dark text-decoration-none">
+                                @Html.DisplayFor(modelItem => item.NamePro)
+                            </a>
+                        </h5>
+                        <p class="old-price text-muted text-decoration-line-through mb-1">@Html.DisplayFor(modelItem => item.Price)</p>
+                        <p class="price text-danger fs-5 mb-1">
+                            @Html.DisplayFor(modelItem => item.DiscountPrice)
+                        </p>
+                        <p class="rating text-warning mb-3">
+                            3.5 <i class="fas fa-star"></i>
+                        </p>
+                        <a href="OrderPage.html" class="btn btn-outline-danger">Mua ngay</a>
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+</div>
