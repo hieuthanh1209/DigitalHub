@@ -1,0 +1,14 @@
+﻿/*Mobile*/
+/* CSS cho các kích thước màn hình */
+#nav-expand {
+    /* Các thuộc tính CSS khác */
+    display: flex;
+    justify-content: space-around;
+}
+
+/* CSS chỉ áp dụng cho màn hình nhỏ */
+@media (max-width: 767px) {
+    #nav-expand {
+        width: 100%;
+    }
+}
