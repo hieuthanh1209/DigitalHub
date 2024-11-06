@@ -14,8 +14,7 @@ namespace DigitalHub.Controllers
     public class HomeController : Controller
     {
         private DigitalHub_DBEntities db = new DigitalHub_DBEntities();
-
-        public ActionResult TrangChu()
+        public ActionResult Index()
         {
             var products = db.Products.Include(p => p.Category1);
             return View(products.ToList());

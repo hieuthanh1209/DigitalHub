@@ -13,22 +13,22 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
 </head>
 <body>
-    <!-- Navigation bar -->
+    <!-- Thanh điều hướng -->
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <div class="container-fluid">
-            <!-- Brand logo -->
-            <a class="navbar-brand" href="~/Home/TrangChu">
+            <!-- Logo thương hiệu -->
+            <a class="navbar-brand" href="~/Home/Index">
                 <img src="~/Icons/D_logo_NoName.svg" alt="Logo" style="width: 30px;">
             </a>
 
-            <!-- Toggler for smaller screens -->
+            <!-- Nút bật/tắt cho màn hình nhỏ -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- Collapsible content -->
+            <!-- Nội dung có thể thu gọn -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left-aligned navbar items -->
+                <!-- Các mục navbar căn trái -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="~/Home/Laptop">Laptop</a>
@@ -44,10 +44,10 @@
                     </li>
                 </ul>
 
-                <!-- Right-aligned search and cart items -->
+                <!-- Các mục tìm kiếm và giỏ hàng căn phải -->
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <form class="d-flex me-2">
-                        <input class="form-control" type="search" placeholder="Search products" id="searchInput" aria-label="Search">
+                        <input class="form-control" type="search" placeholder="Tìm kiếm sản phẩm" id="searchInput" aria-label="Search">
                     </form>
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center" href="CartPage.html">
@@ -60,23 +60,22 @@
         </div>
     </nav>
 
-
     <div>
         @RenderBody()
     </div>
 
     <!--Footer-->
-    <!-- Footer -->
+    <!-- Chân trang -->
     <div class="container-fluid">
         <footer class="row row-cols-1 row-cols-md-5 py-5 border-top">
             <div class="col mb-3 text-center text-md-start">
-                <a href="~/Home/TrangChu" class="d-flex align-items-center justify-content-center justify-content-md-start mb-3 link-dark text-decoration-none">
+                <a href="~/Home/Index" class="d-flex align-items-center justify-content-center justify-content-md-start mb-3 link-dark text-decoration-none">
                     <img src="~/Icons/D_logo_NoName.svg" alt="Logo" width="60">
                 </a>
                 <p class="text-muted">© Digital Hub 2024</p>
             </div>
 
-            <div class="col"></div> <!-- Empty column for spacing -->
+            <div class="col"></div> <!-- Cột trống để tạo khoảng cách -->
 
             <div class="col mb-3">
                 <h5 class="text-center text-md-start">Về Digital Hub</h5>
