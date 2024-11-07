@@ -19,7 +19,7 @@
                 MÔ TẢ
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.DecriptionPro)
+                <p>@Html.Raw(Model.DecriptionPro?.Replace("\n", "<br>"))</p>
             </dd>
             <dt>
                 GIÁ GỐC
@@ -37,7 +37,7 @@
                 HÌNH MINH HỌA
             </dt>
             <dd>
-                <img src="~/Images/@Model.ImagePro" />
+                <img src="~/Images/@Model./@Model.ImagePro" />
             </dd>
             <dt>
                 NHÓM SẢN PHẨM
