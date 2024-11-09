@@ -19,3 +19,30 @@
         white-space: nowrap;
     }
 }
+
+@media (max-width: 576px) {
+    /* Điều chỉnh kích thước sản phẩm */
+    .product-card {
+        min-height: 300px;
+    }
+
+        .product-card img {
+            height: 120px;
+        }
+
+    .card-title a {
+        font-size: 12px;
+    }
+
+    .price {
+        font-size: 14px;
+    }
+
+    .btn-wishlist {
+        top: 5px;
+        right: 5px;
+    }
+}
+
+
+
