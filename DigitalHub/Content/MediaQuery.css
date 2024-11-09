@@ -12,3 +12,10 @@
         width: 100%;
     }
 }
+
+/* CSS chỉ áp dụng cho màn hình tablet */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .navbar-nav {
+        white-space: nowrap;
+    }
+}

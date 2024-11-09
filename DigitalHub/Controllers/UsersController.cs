@@ -71,23 +71,42 @@ namespace DigitalHub.Controllers
                     var khachhang = database.Customers.FirstOrDefault(k => k.NameCus == cust.NameCus && k.PassCus == cust.PassCus);
                     if (khachhang != null)
                     {
-                        ViewBag.ThongBao = "Chúc mừng đăng nhập thành công!";
                         Session["TaiKhoan"] = khachhang;
+                        return RedirectToAction("Index", "Home"); // Chuyển hướng về trang chủ sau khi đăng nhập
                     }
                     else
-                        ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không đúng";
+                        ModelState.AddModelError(string.Empty, "Tên đăng nhập hoặc mật khẩu không đúng");
                 }
             }
             return View();
         }
 
+
         // GET: Logout
         [HttpGet]
         public ActionResult Logout()
         {
-            Session["TaiKhoan"] = null;
+            // Xóa session
+            Session.Clear();
+            Session.Abandon();
+
+            // Xóa cookie xác thực nếu có
+            if (Request.Cookies["UserCookie"] != null)
+            {
+                var cookie = new HttpCookie("UserCookie")
+                {
+                    Expires = DateTime.Now.AddDays(-1)
+                };
+                Response.Cookies.Add(cookie);
+            }
+
             TempData["ThongBao"] = "Đăng xuất thành công!";
             return RedirectToAction("Login");
+        }
+
+        private bool IsUserLoggedIn()
+        {
+            return Session["TaiKhoan"] != null;
         }
     }
 }

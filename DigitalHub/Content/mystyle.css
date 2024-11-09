@@ -92,3 +92,25 @@
     overflow: hidden;
 }
 
+.action-buttons {
+    display: flex;
+    gap: 8px; /* Khoảng cách giữa các nút */
+}
+
+.btn {
+    font-size: 14px; /* Giảm kích thước font chữ */
+    padding: 5px 10px; /* Điều chỉnh padding nếu cần */
+}
+
+    .btn.btn-primary {
+        min-width: 70px; /* Đảm bảo chiều rộng đủ để chứa cả từ */
+    }
+
+.btn {
+    padding: 5px 8px; /* Giảm padding */
+}
+.scaled-image {
+    width: 50%; /* Điều chỉnh chiều rộng theo ý muốn */
+    height: auto; /* Giữ nguyên tỉ lệ của ảnh */
+}
+

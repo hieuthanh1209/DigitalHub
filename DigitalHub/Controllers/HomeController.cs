@@ -8,12 +8,15 @@ using System.Web;
 using System.Web.Mvc;
 using DigitalHub.Models;
 using System.IO;
+using DigitalHub.Filters;
 
 namespace DigitalHub.Controllers
 {
     public class HomeController : Controller
     {
         private DigitalHub_DBEntities db = new DigitalHub_DBEntities();
+
+        
         public ActionResult Index()
         {
             var products = db.Products.Include(p => p.Category1);

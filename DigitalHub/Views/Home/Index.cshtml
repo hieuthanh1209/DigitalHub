@@ -8,9 +8,9 @@
 <link rel="stylesheet" href="~/Content/mystyle.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
 
-
 <div class="p-5">
     <h2 class="mb-4">Mặt hàng bán chạy</h2>
+
     <div class="row">
         @foreach (var item in Model)
         {
@@ -20,9 +20,15 @@
                     <div class="card-body">
                         <h5 class="card-title">
                             <a href="@Url.Action("Details", "Home", new { id = item.ProductID })" class="text-dark text-decoration-none">
-                                @Html.DisplayFor(modelItem => item.NamePro)
+                                @{
+                                    var namePro = item.NamePro;
+                                    var displayText = namePro.Length > 44 ? namePro.Substring(0, 44) + "..." : namePro;
+                                }
+                                @displayText
                             </a>
+
                         </h5>
+
                         <p class="old-price text-muted text-decoration-line-through mb-1">@String.Format("{0:N0}", item.Price).Replace(",", ".")</p>
                         <p class="price text-danger fs-5 mb-1">
                             @String.Format("{0:N0}", item.DiscountPrice).Replace(",", ".")
@@ -35,5 +41,5 @@
                 </div>
             </div>
         }
-        </div>
+    </div>
 </div>
