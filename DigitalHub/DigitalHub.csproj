@@ -281,6 +281,7 @@
     <Content Include="Views\Users\Register.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Scripts\starRandom.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

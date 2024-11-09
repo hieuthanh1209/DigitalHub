@@ -34,7 +34,7 @@
                             @String.Format("{0:N0}", item.DiscountPrice).Replace(",", ".")
                         </p>
                         <p class="rating text-warning mb-3">
-                            3.5 <i class="fas fa-star"></i>
+                            <span id="ratingValue-@item.NamePro"></span> <i class="fas fa-star"></i>
                         </p>
                         <a href="OrderPage.html" class="btn btn-outline-danger">Mua ngay</a>
                     </div>
@@ -43,3 +43,19 @@
         }
     </div>
 </div>
+
+<script>
+    function generateRandomRatings() {
+        // Lấy tất cả các phần tử có class bắt đầu bằng "ratingValue-"
+        const ratingElements = document.querySelectorAll('[id^="ratingValue-"]');
+
+        // Tạo rating ngẫu nhiên cho mỗi phần tử
+        ratingElements.forEach(element => {
+            const rating = (Math.random() * 4 + 1).toFixed(1);
+            element.textContent = rating;
+        });
+    }
+
+    // Chạy function khi trang được tải
+    window.onload = generateRandomRatings;
+</script>
