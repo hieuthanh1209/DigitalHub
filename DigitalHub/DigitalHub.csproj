@@ -191,6 +191,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\mystyle.css" />
     <Content Include="Content\MediaQuery.css" />
+    <Content Include="Content\Slider.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -215,6 +216,7 @@
     <Content Include="Images\Laptop\Lenovo-ThinkBook-14G7.png" />
     <Content Include="Images\Laptop\ROG-G16.png" />
     <Content Include="Images\Laptop\ROG-Strix-G16.png" />
+    <Content Include="Images\LinhKien\Ram-Crucial-832A.png" />
     <Content Include="Images\MoMo_QR.png" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
