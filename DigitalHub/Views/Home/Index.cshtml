@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
 <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
-<link rel="stylesheet" href="mystyle.css">
+<link rel="stylesheet" href="~/Content/mystyle.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
 
 
@@ -15,19 +15,18 @@
     <div class="row">
         @foreach (var item in Model)
         {
-            <!-- Sản phẩm 1 -->
             <div class="col-sm-6 col-md-4 col-lg-3 mb-2">
                 <div class="card w-100">
                     <img class="card-img-top" alt="laptop_image" src="~/Images/Laptop/@item.ImagePro" />
                     <div class="card-body">
                         <h5 class="card-title">
-                            <a href="ProductPage.html" class="text-dark text-decoration-none">
+                            <a href="@Url.Action("Details", "Home", new { id = item.ProductID })" class="text-dark text-decoration-none">
                                 @Html.DisplayFor(modelItem => item.NamePro)
                             </a>
                         </h5>
-                        <p class="old-price text-muted text-decoration-line-through mb-1">@Html.DisplayFor(modelItem => item.Price)</p>
+                        <p class="old-price text-muted text-decoration-line-through mb-1">@String.Format("{0:N0}", item.Price).Replace(",", ".")</p>
                         <p class="price text-danger fs-5 mb-1">
-                            @Html.DisplayFor(modelItem => item.DiscountPrice)
+                            @String.Format("{0:N0}", item.DiscountPrice).Replace(",", ".")
                         </p>
                         <p class="rating text-warning mb-3">
                             3.5 <i class="fas fa-star"></i>

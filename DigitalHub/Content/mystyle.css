@@ -1,6 +1,4 @@
-﻿body {
-    font-family: 'Afacad Flux', sans-serif;
-}
+﻿
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
@@ -60,6 +58,14 @@
     .product-card .old-price {
         text-decoration: line-through;
         color: #888;
+    }
+    .card-title a {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
     }
 
 .rating {

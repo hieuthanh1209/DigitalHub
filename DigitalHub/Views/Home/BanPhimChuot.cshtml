@@ -21,13 +21,13 @@
                     <img class="card-img-top" alt="laptop_image" src="~/Images/@item.ImagePro" />
                     <div class="card-body">
                         <h5 class="card-title">
-                            <a href="ProductPage.html" class="text-dark text-decoration-none">
+                            <a href="@Url.Action("Details", "Home", new { id = item.ProductID })" class="text-dark text-decoration-none">
                                 @Html.DisplayFor(modelItem => item.NamePro)
                             </a>
                         </h5>
-                        <p class="old-price text-muted text-decoration-line-through mb-1">@Html.DisplayFor(modelItem => item.Price)</p>
+                        <p class="old-price text-muted text-decoration-line-through mb-1">@String.Format("{0:N0}", item.Price).Replace(",", ".")</p>
                         <p class="price text-danger fs-5 mb-1">
-                            @Html.DisplayFor(modelItem => item.DiscountPrice)
+                            @String.Format("{0:N0}", item.DiscountPrice).Replace(",", ".")
                         </p>
                         <p class="rating text-warning mb-3">
                             3.5 <i class="fas fa-star"></i>
