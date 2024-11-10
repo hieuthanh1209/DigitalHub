@@ -130,7 +130,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Filters\AuthenticationFilter.cs" />
@@ -194,6 +193,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\mystyle.css" />
     <Content Include="Content\MediaQuery.css" />
+    <Content Include="Content\Slider.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -218,6 +218,7 @@
     <Content Include="Images\Laptop\Lenovo-ThinkBook-14G7.png" />
     <Content Include="Images\Laptop\ROG-G16.png" />
     <Content Include="Images\Laptop\ROG-Strix-G16.png" />
+    <Content Include="Images\LinhKien\Ram-Crucial-832A.png" />
     <Content Include="Images\MoMo_QR.png" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -288,10 +289,10 @@
     <Content Include="Views\Users\OrderHistory.cshtml" />
     <Content Include="Views\Shared\_LeftSidebar.cshtml" />
     <Content Include="Views\Users\ViewHistory.cshtml" />
+    <Content Include="Views\Users\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ProductViewHistory\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

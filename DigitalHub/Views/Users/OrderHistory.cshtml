@@ -6,7 +6,7 @@
     string currentAction = ViewContext.RouteData.Values["action"].ToString();
 }
 
-<div class="container my-5">
+<div class="container my-3">
     <div class="row">
         <div class="col-md-3">
             @Html.Partial("_LeftSidebar")
@@ -14,8 +14,8 @@
 
         <!-- Cột bên phải: Nội dung -->
         <div class="col-md-9">
-            <h2>Hóa đơn của bạn</h2>
-            <hr />
+            <h2 class="mb-3">Hóa đơn của bạn</h2>
+            <hr class="mt-0 mb-4" />
             @if (!Model.Any())
             {
                 <p>Bạn chưa có hóa đơn nào.</p>
@@ -24,13 +24,13 @@
             {
                 foreach (var order in Model)
                 {
-                    <div class="card mb-4">
+                    <div class="card mb-2">
                         <div class="card-header">
                             <strong>Đơn hàng #@order.ID</strong> - Ngày đặt: @order.DateOrder?.ToString("dd/MM/yyyy")
                         </div>
                         <div class="card-body">
                             <p><strong>Địa chỉ giao hàng:</strong> @order.AddressDeliverry</p>
-                            <table class="table table-bordered">
+                            <table class="table table-bordered mb-2">
                                 <thead>
                                     <tr>
                                         <th>Sản phẩm</th>
@@ -51,7 +51,7 @@
                                     }
                                 </tbody>
                             </table>
-                            <p class="text-right"><strong>Tổng tiền: @String.Format("{0:N0}₫", order.OrderDetails.Sum(d => d.UnitPrice * d.Quantity))</strong></p>
+                            <p class="text-right mb-0"><strong>Tổng tiền: @String.Format("{0:N0}₫", order.OrderDetails.Sum(d => d.UnitPrice * d.Quantity))</strong></p>
                         </div>
                     </div>
                 }

@@ -6,6 +6,9 @@
     <a href="@Url.Action("CustomerInfo", "Users")" class="list-group-item list-group-item-action @(currentAction == "CustomerInfo" ? "active" : "")">
         Thông tin tài khoản
     </a>
+    <a href="@Url.Action("ChangePassword", "Users")" class="list-group-item list-group-item-action @(currentAction == "ChangePassword" ? "active" : "")">
+        Bảo mật
+    </a>
     <a href="@Url.Action("OrderHistory", "Users")" class="list-group-item list-group-item-action @(currentAction == "OrderHistory" ? "active" : "")">
         Hóa đơn
     </a>

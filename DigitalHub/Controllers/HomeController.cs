@@ -63,7 +63,41 @@ namespace DigitalHub.Controllers
             {
                 return HttpNotFound();
             }
+
+            // Gọi phương thức lưu lịch sử xem sản phẩm
+            SaveProductViewHistory(product.ProductID);
+
             return View(product);
+        }
+        // Phương thức lưu lịch sử xem sản phẩm
+        private void SaveProductViewHistory(int productId)
+        {
+            if (Session["TaiKhoan"] != null)
+            {
+                var currentCustomer = (Customer)Session["TaiKhoan"];
+
+                // Kiểm tra xem đã tồn tại bản ghi cho sản phẩm này chưa
+                var existingRecord = db.ProductViewHistories.FirstOrDefault(v => v.CustomerID == currentCustomer.IDCus && v.ProductID == productId);
+
+                if (existingRecord != null)
+                {
+                    // Cập nhật thời gian xem mới nhất
+                    existingRecord.ViewDate = DateTime.Now;
+                    db.Entry(existingRecord).State = EntityState.Modified;
+                }
+                else
+                {
+                    var viewHistory = new ProductViewHistory
+                    {
+                        CustomerID = currentCustomer.IDCus,
+                        ProductID = productId,
+                        ViewDate = DateTime.Now
+                    };
+                    db.ProductViewHistories.Add(viewHistory);
+                }
+
+                db.SaveChanges();
+            }
         }
     }
 }

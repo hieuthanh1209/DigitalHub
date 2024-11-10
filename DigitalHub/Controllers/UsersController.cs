@@ -210,5 +210,82 @@ namespace DigitalHub.Controllers
 
             return View(viewedProducts);
         }
+
+        // GET: ChangePassword
+        [HttpGet]
+        public ActionResult ChangePassword()
+        {
+            if (!IsUserLoggedIn())
+            {
+                return RedirectToAction("Login");
+            }
+
+            // Lấy thông tin khách hàng từ session
+            var currentCustomer = (Customer)Session["TaiKhoan"];
+
+            return View(currentCustomer);
+        }
+
+        // POST: ChangePassword
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePassword(Customer model)
+        {
+            if (!IsUserLoggedIn())
+            {
+                return RedirectToAction("Login");
+            }
+
+            // Lấy thông tin khách hàng từ session
+            var currentCustomer = (Customer)Session["TaiKhoan"];
+            var customerInDb = database.Customers.Find(currentCustomer.IDCus);
+
+            // Lấy mật khẩu hiện tại, mật khẩu mới và xác nhận mật khẩu từ form
+            string currentPassword = Request.Form["CurrentPassword"];
+            string newPassword = Request.Form["NewPassword"];
+            string confirmPassword = Request.Form["ConfirmPassword"];
+
+            // Kiểm tra mật khẩu hiện tại có khớp không
+            if (string.IsNullOrEmpty(currentPassword))
+            {
+                ModelState.AddModelError("CurrentPassword", "Vui lòng nhập mật khẩu hiện tại.");
+            }
+            else if (currentPassword != customerInDb.PassCus)
+            {
+                ModelState.AddModelError("CurrentPassword", "Mật khẩu hiện tại không đúng.");
+            }
+
+            // Kiểm tra mật khẩu mới
+            if (string.IsNullOrEmpty(newPassword))
+            {
+                ModelState.AddModelError("NewPassword", "Vui lòng nhập mật khẩu mới.");
+            }
+            else if (!IsPasswordStrong(newPassword))
+            {
+                ModelState.AddModelError("NewPassword", "Mật khẩu mới không đủ mạnh. Cần ít nhất 8 ký tự, chứa chữ và số.");
+            }
+
+            // Kiểm tra xác nhận mật khẩu
+            if (string.IsNullOrEmpty(confirmPassword))
+            {
+                ModelState.AddModelError("ConfirmPassword", "Vui lòng xác nhận mật khẩu mới.");
+            }
+            else if (newPassword != confirmPassword)
+            {
+                ModelState.AddModelError("ConfirmPassword", "Mật khẩu mới và xác nhận mật khẩu không khớp.");
+            }
+
+            if (ModelState.IsValid)
+            {
+                // Cập nhật mật khẩu mới
+                customerInDb.PassCus = newPassword;
+                database.SaveChanges();
+
+                TempData["SuccessMessage"] = "Đổi mật khẩu thành công!";
+                return RedirectToAction("ChangePassword");
+            }
+
+            return View(customerInDb);
+        }
     }
 }
