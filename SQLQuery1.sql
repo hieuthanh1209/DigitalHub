@@ -59,42 +59,12 @@ CREATE TABLE [dbo].[OrderDetail] (
     FOREIGN KEY ([IDOrder]) REFERENCES [dbo].[OrderPro] ([ID])
 );
 
--- Insert data into AdminUser
-INSERT INTO [dbo].[AdminUser] (NameUser, RoleUser, PasswordUser)
-VALUES
-    (N'Admin1', N'Admin', N'password123'),
-    (N'User1', N'User', N'password456');
-
--- Insert data into Category
-INSERT INTO [dbo].[Category] (IDCate, NameCate)
-VALUES
-    (N'C001', N'Electronics'),
-    (N'C002', N'Books'),
-    (N'C003', N'Clothing');
-
--- Insert data into Customer
-INSERT INTO [dbo].[Customer] (NameCus, PhoneCus, EmailCus)
-VALUES
-    (N'John Doe', N'1234567890', N'john@example.com'),
-    (N'Jane Smith', N'0987654321', N'jane@example.com');
-
--- Insert data into Products
-INSERT INTO [dbo].[Products] (NamePro, DecriptionPro, Category, Price, DiscountPrice, ImagePro)
-VALUES
-    (N'Laptop', N'15-inch laptop with 8GB RAM', N'C001', 1000.00, 900.00, N'laptop.jpg'),
-    (N'Novel', N'Bestselling fiction novel', N'C002', 20.00, 15.00, N'novel.jpg'),
-    (N'T-Shirt', N'Cotton T-shirt', N'C003', 10.00, 8.00, N'tshirt.jpg');
-
--- Insert data into OrderPro
-INSERT INTO [dbo].[OrderPro] (DateOrder, IDCus, AddressDeliverry)
-VALUES
-    ('2024-10-01', 1, N'123 Main St'),
-    ('2024-10-02', 2, N'456 Elm St');
-
--- Insert data into OrderDetail
-INSERT INTO [dbo].[OrderDetail] (IDProduct, IDOrder, Quantity, UnitPrice)
-VALUES
-    (1, 1, 1, 900.00),       -- Product: Laptop, Order: 1
-    (2, 2, 2, 15.00),        -- Product: Novel, Order: 2
-    (3, 1, 3, 8.00);         -- Product: T-Shirt, Order: 1
-
+-- Bảng ProductViewHistory
+CREATE TABLE [dbo].[ProductViewHistory] (
+    [ID] INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    [CustomerID] INT NOT NULL,
+    [ProductID] INT NOT NULL,
+    [ViewDate] DATETIME NOT NULL,
+    CONSTRAINT [FK_ProductViewHistory_Customer] FOREIGN KEY ([CustomerID]) REFERENCES [dbo].[Customer]([IDCus]),
+    CONSTRAINT [FK_ProductViewHistory_Product] FOREIGN KEY ([ProductID]) REFERENCES [dbo].[Products]([ProductID])
+);

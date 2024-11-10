@@ -170,6 +170,9 @@
     <Compile Include="Models\Product.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProductViewHistory.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -278,12 +281,17 @@
     <Content Include="Views\Home\BanPhimChuot.cshtml" />
     <Content Include="Views\Home\TaiNghe.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Users\CustomerInfo.cshtml" />
     <Content Include="Views\Users\Register.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
-    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Users\OrderHistory.cshtml" />
+    <Content Include="Views\Shared\_LeftSidebar.cshtml" />
+    <Content Include="Views\Users\ViewHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ProductViewHistory\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
