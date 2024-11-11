@@ -62,13 +62,13 @@ namespace DigitalHub.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (string.IsNullOrEmpty(cust.NameCus))
+                if (string.IsNullOrEmpty(cust.EmailCus))
                     ModelState.AddModelError(string.Empty, "Tên đăng nhập không được để trống");
                 if (string.IsNullOrEmpty(cust.PassCus))
                     ModelState.AddModelError(string.Empty, "Mật khẩu không được để trống");
                 if (ModelState.IsValid)
                 {
-                    var khachhang = database.Customers.FirstOrDefault(k => k.NameCus == cust.NameCus && k.PassCus == cust.PassCus);
+                    var khachhang = database.Customers.FirstOrDefault(k => k.EmailCus == cust.EmailCus && k.PassCus == cust.PassCus);
                     if (khachhang != null)
                     {
                         Session["TaiKhoan"] = khachhang;

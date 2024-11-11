@@ -19,15 +19,20 @@
     {
         @Html.ValidationSummary(true)
         <div class="mb-3 mt-3">
-            <label for="name" class="form-label">TÊN:</label>
-            <input type="text" class="form-control" id="name" name="NameCus"
+            <label for="name" class="form-label">E-Mail:</label>
+            <input type="text" class="form-control" id="email" name="EmailCus"
                    required>
         </div>
-        <div class="mb-3">
+        <div class="mb-3 mt-3">
             <label for="pwd" class="form-label">PASSWORD:</label>
             <input type="password" class="form-control" id="pwd" name="PassCus" required>
         </div>
         <button type="submit" class="btn btn-primary">XÁC NHẬN</button>
+        <div class="mb-3">
+            <a href="@Url.Action("Register", "Users")" class="nav-link">
+                Chưa có tài khoản? <i class="fas fa-user-plus"></i> Đăng ký ngay
+            </a>
+        </div>
     }
 
 </div>
