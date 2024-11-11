@@ -1,143 +1,61 @@
 ﻿
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: #eee;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    border-radius: 1rem;
-    background-image: linear-gradient(to top, #bfbfbf 0%, #929292 100%);
-}
-
-    /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-        background: #555;
-    }
-
-.fakeimg {
-    height: 300px;
-    background: #aaaaaa;
-}
-
-#product-card-buy-button {
-    display: block;
-    margin: 0 auto;
-}
-
-#product-card-name {
-    text-decoration: none;
-    color: black;
-}
-
-.product-card {
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    padding: 10px;
-    text-align: left;
-    margin: 10px;
-    width: 200px;
-    margin: 10px;
-}
-
-    .product-card img {
-        width: 100%;
-        border-radius: 10px;
-    }
-
-    .product-card .price {
-        font-size: 1.2em;
-        font-weight: bold;
-    }
-
-    .product-card .old-price {
-        text-decoration: line-through;
-        color: #888;
-    }
-    .card-title a {
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: normal;
-    }
-
-.rating {
-    color: #f39c12;
-}
-
-.product-card .btn {
-    border-radius: 20px;
-    border: 1px solid #ff0000;
-}
-
-#inputQuantity::-webkit-outer-spin-button,
-#inputQuantity::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-#inputQuantity {
-    -moz-appearance: textfield;
-}
-
-.custom-rounded {
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.action-buttons {
-    display: flex;
-    gap: 8px; /* Khoảng cách giữa các nút */
-}
-
-.btn {
-    font-size: 14px; /* Giảm kích thước font chữ */
-    padding: 5px 10px; /* Điều chỉnh padding nếu cần */
-}
-
-    .btn.btn-primary {
-        min-width: 70px; /* Đảm bảo chiều rộng đủ để chứa cả từ */
-    }
-
-.btn {
-    padding: 5px 8px; /* Giảm padding */
-}
-.scaled-image {
-    width: 50%; /* Điều chỉnh chiều rộng theo ý muốn */
-    height: auto; /* Giữ nguyên tỉ lệ của ảnh */
-}
-
 .card {
     display: flex;
     flex-direction: column;
-    height: 100%;
-}
-
-.card-body {
-    display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    height: 100%;
+    height: 100%; /* Đảm bảo card chiếm toàn bộ chiều cao */
 }
 
 .card-title {
-    flex-grow: 1;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-weight: 600;
+    margin: 0;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    min-height: 3em; /* Đảm bảo chiều cao tối thiểu cho tiêu đề */
+    display: flex;
+    
+}
+
+.price-section {
+    margin-top: auto; /* Đẩy phần giá xuống đáy của card-body */
 }
 
 .price, .old-price, .rating {
     margin: 0;
 }
 
+.rating {
+    margin-top: 10px;
+}
 
+@media (max-width: 768px) {
+    .card img {
+        height: 180px;
+    }
+
+    .card-body {
+        padding: 0.6rem;
+    }
+}
+/* Kiểm soát modal khi bật checkbox */
+#modal-toggle:checked {
+    display: block;
+}
+/* Lớp phủ (Overlay) */
+#overlay {
+    display: none; /* Ẩn lớp phủ */
+}
+
+/* Hiển thị Modal khi checkbox được chọn */
+#modal-toggle:checked + .modal; {
+    display: block;
+}
+
+.modal {
+    display: none;
+    z-index: 2000; /* Đặt z-index cao hơn overlay */
+}
+.modal-content {
+    position: relative;
+    padding: 20px;
+}

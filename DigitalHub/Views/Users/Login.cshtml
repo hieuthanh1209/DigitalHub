@@ -1,14 +1,13 @@
-﻿
-@{
-    ViewBag.Title = "Login";
+﻿@{
+    ViewBag.Title = "Đăng nhập";
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
 
+<!-- Hiển thị thông báo thành công -->
 @if (TempData["ThongBao"] != null)
 {
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div class="alert alert-success">
         @TempData["ThongBao"]
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 }
 
@@ -19,20 +18,15 @@
     {
         @Html.ValidationSummary(true)
         <div class="mb-3 mt-3">
-            <label for="name" class="form-label">E-Mail:</label>
-            <input type="text" class="form-control" id="email" name="EmailCus"
+            <label for="name" class="form-label">TÊN:</label>
+            <input type="text" class="form-control" id="name" name="NameCus"
                    required>
         </div>
-        <div class="mb-3 mt-3">
+        <div class="mb-3">
             <label for="pwd" class="form-label">PASSWORD:</label>
             <input type="password" class="form-control" id="pwd" name="PassCus" required>
         </div>
         <button type="submit" class="btn btn-primary">XÁC NHẬN</button>
-        <div class="mb-3">
-            <a href="@Url.Action("Register", "Users")" class="nav-link">
-                Chưa có tài khoản? <i class="fas fa-user-plus"></i> Đăng ký ngay
-            </a>
-        </div>
     }
 
 </div>
