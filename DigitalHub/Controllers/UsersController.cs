@@ -284,7 +284,6 @@ namespace DigitalHub.Controllers
                 TempData["SuccessMessage"] = "Đổi mật khẩu thành công!";
                 return RedirectToAction("ChangePassword");
             }
-
             return View(customerInDb);
         }
     }
