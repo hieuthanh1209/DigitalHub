@@ -31,10 +31,6 @@
           <Property Name="PhoneCus" Type="nvarchar" MaxLength="15" />
           <Property Name="EmailCus" Type="nvarchar" MaxLength="255" />
           <Property Name="PassCus" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="AddressCus" Type="nvarchar" MaxLength="255" />
-          <Property Name="ShoppingCart" Type="nvarchar" MaxLength="1000" />
-          <Property Name="BirthDate" Type="date" />
-          <Property Name="Gender" Type="bit" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -66,15 +62,6 @@
           <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
           <Property Name="DiscountPrice" Type="decimal" Precision="18" Scale="2" />
           <Property Name="ImagePro" Type="nvarchar" MaxLength="255" />
-        </EntityType>
-        <EntityType Name="ProductViewHistory">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CustomerID" Type="int" Nullable="false" />
-          <Property Name="ProductID" Type="int" Nullable="false" />
-          <Property Name="ViewDate" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="FK__OrderDeta__IDOrd__440B1D61">
           <End Role="OrderPro" Type="Self.OrderPro" Multiplicity="0..1" />
@@ -124,30 +111,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductViewHistory_Customer">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
-          <End Role="ProductViewHistory" Type="Self.ProductViewHistory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="IDCus" />
-            </Principal>
-            <Dependent Role="ProductViewHistory">
-              <PropertyRef Name="CustomerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductViewHistory_Product">
-          <End Role="Products" Type="Self.Products" Multiplicity="1" />
-          <End Role="ProductViewHistory" Type="Self.ProductViewHistory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Products">
-              <PropertyRef Name="ProductID" />
-            </Principal>
-            <Dependent Role="ProductViewHistory">
-              <PropertyRef Name="ProductID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="DigitalHub_DBModelStoreContainer">
           <EntitySet Name="AdminUser" EntityType="Self.AdminUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
@@ -155,7 +118,6 @@
           <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderPro" EntityType="Self.OrderPro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProductViewHistory" EntityType="Self.ProductViewHistory" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__OrderDeta__IDOrd__440B1D61" Association="Self.FK__OrderDeta__IDOrd__440B1D61">
             <End Role="OrderPro" EntitySet="OrderPro" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
@@ -171,14 +133,6 @@
           <AssociationSet Name="FK_Pro_Category" Association="Self.FK_Pro_Category">
             <End Role="Category" EntitySet="Category" />
             <End Role="Products" EntitySet="Products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductViewHistory_Customer" Association="Self.FK_ProductViewHistory_Customer">
-            <End Role="Customer" EntitySet="Customer" />
-            <End Role="ProductViewHistory" EntitySet="ProductViewHistory" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductViewHistory_Product" Association="Self.FK_ProductViewHistory_Product">
-            <End Role="Products" EntitySet="Products" />
-            <End Role="ProductViewHistory" EntitySet="ProductViewHistory" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -213,11 +167,6 @@
           <Property Name="EmailCus" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="OrderProes" Relationship="Self.FK__OrderPro__IDCus__403A8C7D" FromRole="Customer" ToRole="OrderPro" />
           <Property Name="PassCus" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="AddressCus" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="ShoppingCart" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Gender" Type="Boolean" />
-          <Property Name="BirthDate" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="ProductViewHistories" Relationship="DigitalHub_DBModel.FK_ProductViewHistory_Customer" FromRole="Customer" ToRole="ProductViewHistory" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -255,7 +204,6 @@
           <Property Name="ImagePro" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Category1" Relationship="Self.FK_Pro_Category" FromRole="Products" ToRole="Category" />
           <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__IDPro__4316F928" FromRole="Products" ToRole="OrderDetail" />
-          <NavigationProperty Name="ProductViewHistories" Relationship="DigitalHub_DBModel.FK_ProductViewHistory_Product" FromRole="Product" ToRole="ProductViewHistory" />
         </EntityType>
         <Association Name="FK_Pro_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
@@ -328,51 +276,7 @@
             <End Role="Products" EntitySet="Products" />
             <End Role="OrderDetail" EntitySet="OrderDetails" />
           </AssociationSet>
-          <EntitySet Name="ProductViewHistories" EntityType="DigitalHub_DBModel.ProductViewHistory" />
-          <AssociationSet Name="FK_ProductViewHistory_Customer" Association="DigitalHub_DBModel.FK_ProductViewHistory_Customer">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="ProductViewHistory" EntitySet="ProductViewHistories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductViewHistory_Product" Association="DigitalHub_DBModel.FK_ProductViewHistory_Product">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="ProductViewHistory" EntitySet="ProductViewHistories" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="ProductViewHistory">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CustomerID" Type="Int32" Nullable="false" />
-          <Property Name="ProductID" Type="Int32" Nullable="false" />
-          <Property Name="ViewDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Customer" Relationship="DigitalHub_DBModel.FK_ProductViewHistory_Customer" FromRole="ProductViewHistory" ToRole="Customer" />
-          <NavigationProperty Name="Product" Relationship="DigitalHub_DBModel.FK_ProductViewHistory_Product" FromRole="ProductViewHistory" ToRole="Product" />
-        </EntityType>
-        <Association Name="FK_ProductViewHistory_Customer">
-          <End Type="DigitalHub_DBModel.Customer" Role="Customer" Multiplicity="1" />
-          <End Type="DigitalHub_DBModel.ProductViewHistory" Role="ProductViewHistory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="IDCus" />
-            </Principal>
-            <Dependent Role="ProductViewHistory">
-              <PropertyRef Name="CustomerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductViewHistory_Product">
-          <End Type="DigitalHub_DBModel.Product" Role="Product" Multiplicity="1" />
-          <End Type="DigitalHub_DBModel.ProductViewHistory" Role="ProductViewHistory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
-            </Principal>
-            <Dependent Role="ProductViewHistory">
-              <PropertyRef Name="ProductID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -401,10 +305,6 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="DigitalHub_DBModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="ShoppingCart" ColumnName="ShoppingCart" />
-                <ScalarProperty Name="AddressCus" ColumnName="AddressCus" />
                 <ScalarProperty Name="PassCus" ColumnName="PassCus" />
                 <ScalarProperty Name="IDCus" ColumnName="IDCus" />
                 <ScalarProperty Name="NameCus" ColumnName="NameCus" />
@@ -444,16 +344,6 @@
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="DiscountPrice" ColumnName="DiscountPrice" />
                 <ScalarProperty Name="ImagePro" ColumnName="ImagePro" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProductViewHistories">
-            <EntityTypeMapping TypeName="DigitalHub_DBModel.ProductViewHistory">
-              <MappingFragment StoreEntitySet="ProductViewHistory">
-                <ScalarProperty Name="ViewDate" ColumnName="ViewDate" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -31,6 +31,5 @@ namespace DigitalHub.Models
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<OrderPro> OrderProes { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<ProductViewHistory> ProductViewHistories { get; set; }
     }
 }

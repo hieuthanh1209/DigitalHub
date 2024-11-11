@@ -18,7 +18,6 @@ namespace DigitalHub.Models
         public Product()
         {
             this.OrderDetails = new HashSet<OrderDetail>();
-            this.ProductViewHistories = new HashSet<ProductViewHistory>();
         }
     
         public int ProductID { get; set; }
@@ -32,7 +31,5 @@ namespace DigitalHub.Models
         public virtual Category Category1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductViewHistory> ProductViewHistories { get; set; }
     }
 }

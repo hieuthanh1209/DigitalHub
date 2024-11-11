@@ -1,13 +1,14 @@
-﻿@{
-    ViewBag.Title = "Đăng nhập";
+﻿
+@{
+    ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
 
-<!-- Hiển thị thông báo thành công -->
 @if (TempData["ThongBao"] != null)
 {
-    <div class="alert alert-success">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
         @TempData["ThongBao"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 }
 
